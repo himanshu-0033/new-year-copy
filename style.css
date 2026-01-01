@@ -1,0 +1,374 @@
+/* -------------------------
+   Global Reset
+-------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #ffdde1, #fff);
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* -------------------------
+   Section Layout
+-------------------------- */
+.section {
+  min-height: 100vh;
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* -------------------------
+   Headings & Hero
+-------------------------- */
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #e63946;
+  text-shadow: 0 0 15px pink;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+.center-title {
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* -------------------------
+   Buttons
+-------------------------- */
+button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: #e63946;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4d6d;
+}
+
+/* -------------------------
+   Chat Section
+-------------------------- */
+.chat-box {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat {
+  padding: 12px 18px;
+  border-radius: 20px;
+  margin: 8px 0;
+  max-width: 80%;
+  animation: fadeIn 0.5s ease;
+}
+
+.chat.left {
+  background: #fff;
+  align-self: flex-start;
+}
+
+.chat.right {
+  background: #ffe3e3;
+  align-self: flex-end;
+}
+
+/* -------------------------
+   Typing Dots
+-------------------------- */
+.typing {
+  display: none;
+  margin-top: 10px;
+}
+
+.typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  background: #aaa;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* -------------------------
+   ✅ Slideshow (AUTO IMAGE SIZE – NO CROP)
+-------------------------- */
+.slideshow {
+  position: relative;
+  width: 280px;          /* control width only */
+  margin: 30px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Image respects its own ratio */
+.slide {
+  width: 100%;
+  height: auto;          /* ✅ key fix */
+  display: none;
+  object-fit: contain;  /* ✅ no crop */
+  transition: opacity 1.2s ease;
+}
+
+.slide.active {
+  display: block;
+}
+
+.caption {
+  margin-top: 15px;
+  color: #e63946;
+  font-size: 1.1rem;
+}
+
+/* -------------------------
+   Shayari Section (CLEAN)
+-------------------------- */
+.shayari-box {
+  min-height: 140px;
+  margin: 30px auto;
+  max-width: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#shayariText {
+  font-size: 1.35rem;
+  color: #b5179e;
+  line-height: 1.9;
+  text-align: center;
+}
+
+/* Shayari Animations */
+@keyframes shayariIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shayariOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-40px); }
+}
+
+#nextBtn {
+  display: none;
+  margin-top: 20px;
+  background: #ff4d6d;
+  box-shadow: 0 10px 25px rgba(255,77,109,0.4);
+}
+
+/* -------------------------
+   Final Overlay
+-------------------------- */
+#finalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.final-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 380px;
+}
+
+.ring {
+  font-size: 50px;
+  animation: ringPulse 1.5s infinite;
+}
+
+@keyframes ringPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* -------------------------
+   Memory Permission
+-------------------------- */
+#permissionBox {
+  display: none;
+  margin-top: 25px;
+}
+
+#memorySlideshow {
+  display: none;
+}
+
+/* -------------------------
+   Effects
+-------------------------- */
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+}
+
+#heart-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  color: rgba(255,0,100,0.7);
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+#fireworks {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+/* Chat Memories */
+#chatAskBox {
+  animation: fadeIn 1s ease;
+}
+
+#chatViewer {
+  display: none;
+  margin-top: 20px;
+}
+
+#chatViewer img {
+  width: 280px;
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin-bottom: 15px;
+}
+
+#chatNextBtn {
+  display: none;
+}
+/* Special Video Section */
+.video-section {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+}
+
+.video-box {
+  width: 300px;
+  max-width: 95%;
+  margin: 25px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+.video-box video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+
+.video-note {
+  color: #e63946;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+/* Video Section */
+.video-section {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+}
+
+/* Video Container */
+.video-box {
+  position: relative;
+  width: 300px;
+  max-width: 95%;
+  margin: 25px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+}
+
+/* Video */
+.video-box video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+}
+
+/* Play Button (Center) */
+#playBtn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  color: white;
+  background: rgba(0,0,0,0.35);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#playBtn:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+/* Sound Button */
+#soundBtn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 22px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Hide sound until play */
+#soundBtn {
+  display: none;
+}
